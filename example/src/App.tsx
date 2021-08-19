@@ -1,25 +1,40 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
-import { StyleSheet, View } from 'react-native';
-import PopUpsViewManager from 'react-native-pop-ups';
+import { View, Button } from 'react-native';
+import {
+  ToastContextProvider,
+  useToast,
+  NotificationProvider,
+  useBanner,
+} from 'react-native-pop-ups';
 
-export default function App() {
+export const App: FC = () => {
   return (
-    <View style={styles.container}>
-      <PopUpsViewManager color="#32a852" style={styles.box} />
+    <NotificationProvider>
+      <ToastContextProvider>
+        <Example />
+      </ToastContextProvider>
+    </NotificationProvider>
+  );
+};
+
+const Example = () => {
+  const toast = useToast();
+  const notification = useBanner();
+
+  return (
+    <View style={{ flex: 1 }}>
+      <Button title="Toast" onPress={() => toast.show({ message: 'Yo' })} />
+      <Button
+        title="Notification"
+        onPress={() =>
+          notification.show({
+            title: 'Done',
+          })
+        }
+      />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
+export default App;

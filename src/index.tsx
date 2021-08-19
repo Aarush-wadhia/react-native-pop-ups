@@ -1,12 +1,5 @@
-import { requireNativeComponent, ViewStyle } from 'react-native';
-
-type PopUpsProps = {
-  color: string;
-  style: ViewStyle;
-};
-
-export const PopUpsViewManager = requireNativeComponent<PopUpsProps>(
-'PopUpsView'
-);
-
-export default PopUpsViewManager;
+export { ToastContextProvider, useToast } from './components/toast';
+export {
+  NotificationProvider,
+  useBanner,
+} from './components/in-app-notification';

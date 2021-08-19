@@ -149,5 +149,9 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "lottie-ios": "3.2.3",
+    "lottie-react-native": "^4.0.3"
   }
 }
